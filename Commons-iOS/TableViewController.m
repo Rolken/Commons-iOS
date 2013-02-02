@@ -218,7 +218,9 @@
 
             NSLog(@"Upload ye files!");
 
-            __block void (^run)() = ^() {
+            // Declaring the block variable weakly allows its only strong reference to be from within itself.
+            // This means that, since it's recursive, when the recursion tops out, the block will be destroyed.
+            __block void (^__weak run)() = ^() {
                 FileUpload *record = [app firstUploadRecord];
                 if (record != nil) {
                     [app beginUpload:record completion:^() {
