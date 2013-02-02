@@ -20,7 +20,8 @@
 
 - (id)initWithRequest:(NSURLRequest *)requestUrl
 {
-    if ([self init]) {
+    self = [self init];
+    if (self) {
         requestUrl_ = requestUrl;
         onCompletion_ = nil;
         data_ = nil;
